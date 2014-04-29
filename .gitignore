@@ -1,0 +1,13 @@
+node_modules/
+bower_components/
+typings/
+bin/
+.sass-cache/
+obj/
+*.csproj.user
+*.js
+*.css
+*.suo
+*.map
+chiepomme/src/*.png
+dist/

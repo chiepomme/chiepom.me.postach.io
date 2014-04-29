@@ -1,0 +1,149 @@
+﻿<!DOCTYPE html>
+<html prefix="og: http://ogp.me/ns#" xmlns:og="http://ogp.me/ns#">
+<head>
+    <meta charset="utf-8">
+    <title>
+        {% if is_login %}Login
+        {% elif is_home %}chiepom.me
+        {% elif is_tag %}chiepom.me - {{ tag }}
+        {% elif post.type == 'post' %}chiepom.me - {{ post.title }}
+        {% elif post.type == 'link' %}chiepom.me - {{ link.title }}
+        {% elif post.type == 'page' %}chiepom.me - {{ page.title }}
+        {% endif %} 
+    </title>
+    {{ header_meta }}
+
+    <link href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAiFJREFUeNqUU81rE0EUf7uzs5tN0naNTf0gaC0tSqioPXgQPFQ8iRW82JPgSe8epKDH4P+gePIiHuLBgujFDxAVijFqgod+BAlRs0lq3W52u8nujm+ySSy6DfiDtzPvzbzf+82+GWCMQZgZxfqNtXvFszut9yw0+DHz4UJ+kbGlrO+8fF67M4hAhBC4s5PXyzWAte+CrNijVx6/0DOwA4SOjL/w/p3zpVhUjjAfHVxOH/U3QGiXIhRkt0mSagQkBzbfHju567wUxmr5dM+W0qsAkF8WNYEpJ7gvo+bxFACxlSnubyfQ8gXzqeGoh1fWieaoQTJXIHRFEjQqA7SQxBrafAQQDY6wXDJzFSM2vVIXqNkC8Pw/1TkBFYJkCcfUbly3rNdzZ6Kn+wqqBhBfFagdQWbcJHSTKa/a8/EjYiwSg7YuNRd59T5BxTMfEJNImqamR7hvQKc9240r4ERtEajoicOhXXiY0zOWkrgkSNJUw+4q4OdmgRKCYxwD+6X211NpOg5d8j7mZ8ZuaYXCrBZDaXgcghbF+UQS4NBoMPeRlQ7Tg9kl/eY/BBwX549XRmRwFZ6MndgXB6g7zGxueT9TKHwiATCEcc0TZ0IJOGLgmmP4jw5gsmu2VsGo356bJInVeu1ao9zIVssbb77F2bPO5rD7na866zmTsVclu3z/s3510FsIvYmf9F8Le10490OCJ5enk3dhAELfwv/gtwADAKRZMo6HY2xnAAAAAElFTkSuQmCC" rel="shortcut icon" />
+
+    <link href="../bower_components/normalize-css/normalize.css?__inline=true" rel="stylesheet" />
+    <link href="style.css?__inline=true" rel="stylesheet" />
+
+    <script type="text/javascript">
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', '{{ site.analytics }}']);
+        _gaq.push(['_trackPageview']);
+        (function () {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
+    </script>
+    <script type="text/javascript" src="http://use.typekit.net/rcs4ogg.js"></script>
+    <script type="text/javascript">try { Typekit.load(); } catch (e) { }</script>
+</head>
+<body>
+    <header>
+        <h1><a href="/"><img src="logo.png?__inline=true" title="chiepom.me" /></a></h1>
+
+        <nav role="navigation">
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/about">About</a></li>
+                <li><a href="/event">Event</a></li>
+                <li><a href="/music">Music</a></li>
+                <li><a href="/software">Software</a></li>
+                <li><a href="/art">Art</a></li>
+            </ul>
+        </nav>
+
+
+    </header>
+
+    <main role="main">
+        {% if is_home %}
+        <section>
+            <h2>latest articles</h2>
+
+            {% for post in posts %}
+            <article itemscope itemtype="http://schema.org/BlogPosting">
+                <h3><a href="{{ post.permalink }}">{{ post.title}}</a></h3>
+                <div class="post-date"><p>{{ post.created_at | format_date }}</p></div>
+
+                {% set article = post.content|replace("<" + "div>", "") %}
+                {% set article = article|replace("</" + "div>", "<" + "br />") %}
+                <div class="content" data-type-cleanup="true">{{ article }}</div>
+
+                {% if post.tags %}
+                <div class="tags">{{ post.tags | format_tags(delimiter=" ") }}</div>
+                {% endif %}
+            </article>
+            {% endfor %}
+
+        </section>
+
+        <div class="pagination">
+            {% if pagination.prev %}<a href="{{ pagination.prev }}">&larr; View Previous Posts</a>{% endif %}
+            {% if pagination.next %}<a href="{{ pagination.next }}">View More Posts &rarr;</a>{% endif %}
+        </div>
+
+        {% elif is_tag %}
+        <section>
+            <h2><span class="tag">{{tag}}</span>-tagged articles </h2>
+
+            {% for post in posts %}
+            <article itemscope itemtype="http://schema.org/BlogPosting">
+                <h3><a href="{{ post.permalink }}">{{ post.title}}</a></h3>
+                <div class="post-date"><p>{{ post.created_at | format_date }}</p></div>
+
+                {% set article = post.content|replace("<" + "div>", "") %}
+                {% set article = article|replace("</" + "div>", "<" + "br />") %}
+                <div class="content" data-type-cleanup="true">{{ article }}</div>
+
+                {% if post.tags %}
+                <div class="tags">{{ post.tags | format_tags(delimiter=" ") }}</div>
+                {% endif %}
+            </article>
+            {% endfor %}
+        </section>
+
+
+        {% elif post.type == "post" %}
+        <section>
+            <article itemscope itemtype="http://schema.org/BlogPosting">
+                <h3><a href="{{ post.permalink }}">{{ post.title}}</a></h3>
+                <div class="post-date"><p>{{ post.created_at | format_date }}</p></div>
+
+                {% set article = post.content|replace("<" + "div>", "") %}
+                {% set article = article|replace("</" + "div>", "<" + "br />") %}
+                <div class="content" data-type-cleanup="true">{{ article }}</div>
+
+                {% if post.tags %}
+                <div class="tags">{{ post.tags | format_tags(delimiter=" ") }}</div>
+                {% endif %}
+
+                <section class="comments">
+                    <div id="disqus_thread"></div>
+                    <script type="text/javascript">
+                        var disqus_shortname = '{{ site.disqus }}';
+                        (function() {
+                          var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                          dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+                          (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+                        })();
+                    </script>
+                    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+                    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+                </section>
+
+            </article>
+        </section>
+        {% elif post.type == "link" %}
+        {% elif post.type == "page" %}
+        <section>
+            <article itemscope itemtype="http://schema.org/Article">
+                <h3><a href="{{page.permalink}}">{{page.title}}</a></h3>
+
+                {% set article = page.content|replace("<" + "div>", "") %}
+                {% set article = article|replace("</" + "div>", "<" + "br />") %}
+                <div class="content" data-type-cleanup="true">{{ article }}</div>
+            </article>
+        </section>
+        {% endif %}
+    </main>
+    <footer>
+        <p>Copyrights &copy; chiepomme</p>
+    </footer>
+
+    {{ footer_meta }}
+</body>
+</html>

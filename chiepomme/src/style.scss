@@ -1,0 +1,170 @@
+﻿$default-color: #707070;
+$nav-height: 3em;
+
+$home-color: #ffcfe7;
+$home-tag-color: saturate($home-color, 20%);
+$about-color: #edcfff;
+$about-tag-color: saturate($about-color, 20%);
+$event-color: #cfd4ff;
+$event-tag-color: saturate($event-color, 20%);
+$music-color: #b7e9c2;
+$music-tag-color: saturate($music-color, 20%);
+$software-color: #dbe68f;
+$software-tag-color: saturate($software-color, 20%);
+$art-color: #f6b09f;
+$art-tag-color: saturate($art-color, 20%);
+
+
+body {
+    font-family: "interface", "メイリオ", sans-serif;
+    color: $default-color;
+    font-size: 0.9em;
+    margin: $nav-height auto 0 auto;
+    max-width: 50em;
+    padding: 2em;
+    line-height: 130%;
+}
+
+a {
+    color: $default-color;
+}
+
+h1 {
+    text-align: center;
+}
+
+h2 {
+    font-size: 0.9em;
+    line-height: 3em;
+    font-weight: normal;
+}
+
+h3 {
+    font-size: 1.3em;
+    line-height: 3em;
+    font-weight: normal;
+    text-align: center;
+    margin-top: 1em;
+    margin-bottom: 0.2em;
+}
+
+span.tag {
+    border-radius: 3px;
+    color: #ffffff;
+    font-size: 1.0em;
+    padding: 2px 5px;
+    margin: auto 0.3em;
+    background-color: $home-tag-color;
+}
+
+div.tags a {
+    border-radius: 3px;
+    color: #ffffff;
+    font-size: 1.0em;
+    padding: 2px 5px;
+    margin: auto 0.3em;
+    background-color: $home-tag-color;
+}
+
+div.tags a[href$="illustration"] {
+    background-color: $art-tag-color;
+}
+
+div.tags a[href$="software"] {
+    background-color: $software-tag-color;
+}
+
+article {
+
+    h3 a {
+        text-decoration: none;
+    }
+}
+
+article .content {
+    line-height: 2.3em;
+}
+
+ul {
+    margin: 0.2em auto;
+
+    li {
+        line-height: 1.8em;
+    }
+}
+
+nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    height: $nav-height;
+    line-height: $nav-height;
+    background-color: white;
+
+    ul {
+        float: left;
+        left: 50%;
+        position: relative;
+        margin: 0;
+        padding: 0;
+
+        li {
+            display: block;
+            margin: 0;
+            height: 100%;
+            float: left;
+            left: -50%;
+            position: relative;
+
+            a {
+                display: block;
+                padding-left: 1em;
+                padding-right: 1em;
+                text-decoration: none;
+                line-height: 3.0em;
+            }
+
+            a:hover {
+                background-color: $home-color;
+                color: #ffffff;
+
+                transition: {
+                    property: background-color color;
+                    duration: 120ms;
+                    timing-function: cubic-bezier(0.0, 0.0, 0.3, 0.9);
+                }
+            }
+
+            a[href$="about"]:hover {
+                @extend a:hover;
+                background-color: $about-color;
+            }
+
+            a[href$="event"]:hover {
+                @extend a:hover;
+                background-color: $event-color;
+            }
+
+            a[href$="music"]:hover {
+                @extend a:hover;
+                background-color: $music-color;
+            }
+
+            a[href$="software"]:hover {
+                @extend a:hover;
+                background-color: $software-color;
+            }
+
+            a[href$="art"]:hover {
+                @extend a:hover;
+                background-color: $art-color;
+            }
+        }
+    }
+}
+
+footer {
+    text-align: center;
+}

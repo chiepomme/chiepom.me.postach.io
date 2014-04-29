@@ -1,0 +1,22 @@
+{
+  "name": "chiepomme",
+  "version": "0.0.0",
+  "authors": [
+    "chiepomme"
+  ],
+  "description": "chiepom.me",
+  "main": "dist/index.html",
+  "homepage": "http://chiepom.me/",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components"
+  ],
+  "dependencies": {
+    "two": "~0.3.0",
+    "lodash": "~2.4.1",
+    "paper": "~0.9.18",
+    "normalize-css": "~3.0.1"
+  }
+}
