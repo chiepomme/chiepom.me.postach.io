@@ -31,6 +31,11 @@ a {
 
 h1 {
     text-align: center;
+
+    img {
+        max-width: 100%;
+        height: auto;
+    }
 }
 
 h2 {
@@ -123,8 +128,6 @@ nav {
     left: 0;
     width: 100%;
     text-align: center;
-    height: $nav-height;
-    line-height: $nav-height;
     background-color: white;
 
     ul {
@@ -137,7 +140,8 @@ nav {
         li {
             display: block;
             margin: 0;
-            height: 100%;
+            line-height: $nav-height;
+            height: $nav-height;
             float: left;
             left: -50%;
             position: relative;
