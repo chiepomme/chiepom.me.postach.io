@@ -59,8 +59,11 @@
                 <h3><a href="{{ post.permalink }}">{{ post.title}}</a></h3>
                 <div class="post-date"><p>{{ post.created_at | format_date }}</p></div>
 
-                {% set article = post.content|replace("<" + "div>", "") %}
-                {% set article = article|replace("</" + "div>", "<" + "br />") %}
+                {% set article = post.content %}
+                {% set article = article|replace('<' + 'div>### ', '<' + 'div class="heading3">') %}
+                {% set article = article|replace('<' + 'div>## ',  '<' + 'div class="heading2">') %}
+                {% set article = article|replace('<' + 'div># ',   '<' + 'div class="heading1">') %}
+                {% set article = article|replace('<' + 'div>',     '<' + 'div class="paragraph">') %}
                 <div class="content" data-type-cleanup="true">{{ article }}</div>
 
                 {% if post.tags %}
@@ -85,8 +88,11 @@
                 <h3><a href="{{ post.permalink }}">{{ post.title}}</a></h3>
                 <div class="post-date"><p>{{ post.created_at | format_date }}</p></div>
 
-                {% set article = post.content|replace("<" + "div>", "") %}
-                {% set article = article|replace("</" + "div>", "<" + "br />") %}
+                {% set article = post.content %}
+                {% set article = article|replace('<' + 'div>### ', '<' + 'div class="heading3">') %}
+                {% set article = article|replace('<' + 'div>## ',  '<' + 'div class="heading2">') %}
+                {% set article = article|replace('<' + 'div># ',   '<' + 'div class="heading1">') %}
+                {% set article = article|replace('<' + 'div>',     '<' + 'div class="paragraph">') %}
                 <div class="content" data-type-cleanup="true">{{ article }}</div>
 
                 {% if post.tags %}
@@ -103,8 +109,11 @@
                 <h3><a href="{{ post.permalink }}">{{ post.title}}</a></h3>
                 <div class="post-date"><p>{{ post.created_at | format_date }}</p></div>
 
-                {% set article = post.content|replace("<" + "div>", "") %}
-                {% set article = article|replace("</" + "div>", "<" + "br />") %}
+                {% set article = post.content %}
+                {% set article = article|replace('<' + 'div>### ', '<' + 'div class="heading3">') %}
+                {% set article = article|replace('<' + 'div>## ',  '<' + 'div class="heading2">') %}
+                {% set article = article|replace('<' + 'div># ',   '<' + 'div class="heading1">') %}
+                {% set article = article|replace('<' + 'div>',     '<' + 'div class="paragraph">') %}
                 <div class="content" data-type-cleanup="true">{{ article }}</div>
 
                 {% if post.tags %}
@@ -133,8 +142,11 @@
             <article itemscope itemtype="http://schema.org/Article">
                 <h3><a href="{{page.permalink}}">{{page.title}}</a></h3>
 
-                {% set article = page.content|replace("<" + "div>", "") %}
-                {% set article = article|replace("</" + "div>", "<" + "br />") %}
+                {% set article = page.content %}
+                {% set article = article|replace('<' + 'div>### ', '<' + 'div class="heading3">') %}
+                {% set article = article|replace('<' + 'div>## ',  '<' + 'div class="heading2">') %}
+                {% set article = article|replace('<' + 'div># ',   '<' + 'div class="heading1">') %}
+                {% set article = article|replace('<' + 'div>',     '<' + 'div class="paragraph">') %}
                 <div class="content" data-type-cleanup="true">{{ article }}</div>
             </article>
         </section>
