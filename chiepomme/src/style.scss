@@ -83,6 +83,30 @@ article {
 
 article .content {
     line-height: 2.3em;
+
+    .paragraph {
+        margin: {
+            top: 0.6em;
+            bottom: 0.6em;
+        }
+
+        text-indent: 1.0em;
+    }
+
+    .heading1 {
+        margin-top: 0.8em;
+        font-size: 1.2em;
+    }
+
+    .heading2 {
+        margin-top: 0.6em;
+        font-size: 1.1em;
+    }
+
+    .heading3 {
+        margin-top: 0.3em;
+        font-weight: bold;
+    }
 }
 
 ul {
