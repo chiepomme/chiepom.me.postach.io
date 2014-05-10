@@ -125,6 +125,11 @@ article .content {
         margin-top: 0.3em;
         font-weight: bold;
     }
+
+    iframe[src^="http://bandcamp.com/EmbeddedPlayer"] {
+        width: 100% !important;
+        height: 350px !important;
+    }
 }
 
 ul {
