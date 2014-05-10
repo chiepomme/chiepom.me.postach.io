@@ -9,5 +9,7 @@ obj/
 *.css
 *.suo
 *.map
+*.TMP
 chiepomme/src/*.png
 dist/
+
