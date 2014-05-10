@@ -80,7 +80,6 @@ div.tags a[href$="software"] {
 }
 
 article {
-
     h3 a {
         text-decoration: none;
     }
@@ -96,6 +95,15 @@ article .content {
         }
 
         text-indent: 1.0em;
+
+        img {
+            display: block;
+
+            margin: {
+                left: auto;
+                right: auto;
+            }
+        }
     }
 
     .heading1 {
