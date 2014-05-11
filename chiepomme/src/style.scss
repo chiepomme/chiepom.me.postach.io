@@ -9,8 +9,8 @@ $event-color: #cfd4ff;
 $event-tag-color: saturate($event-color, 20%);
 $music-color: #b7e9c2;
 $music-tag-color: saturate($music-color, 20%);
-$software-color: #dbe68f;
-$software-tag-color: saturate($software-color, 20%);
+$app-color: #dbe68f;
+$app-tag-color: saturate($app-color, 20%);
 $art-color: #f6b09f;
 $art-tag-color: saturate($art-color, 20%);
 
@@ -75,8 +75,8 @@ div.tags a[href$="illustration"] {
     background-color: $art-tag-color;
 }
 
-div.tags a[href$="software"] {
-    background-color: $software-tag-color;
+div.tags a[href$="app"] {
+    background-color: $app-tag-color;
 }
 
 article {
@@ -199,9 +199,9 @@ nav {
                 background-color: $music-color;
             }
 
-            a[href$="software"]:hover {
+            a[href$="app"]:hover {
                 @extend a:hover;
-                background-color: $software-color;
+                background-color: $app-color;
             }
 
             a[href$="art"]:hover {
