@@ -16,7 +16,7 @@ $art-tag-color: saturate($art-color, 20%);
 
 
 body {
-    font-family: "interface", "メイリオ", sans-serif;
+    font-family: "interface", "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", "メイリオ", Meiryo, Osaka, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
     color: $default-color;
     font-size: 0.9em;
     margin: $nav-height auto 0 auto;
@@ -45,6 +45,7 @@ h2 {
 }
 
 h3 {
+    font-family: "FOT-ハミング Std D";
     font-size: 1.3em;
     line-height: 3em;
     font-weight: normal;
@@ -112,18 +113,20 @@ article .content {
     }
 
     .heading1 {
+        font-family: "FOT-ハミング Std D";
         margin-top: 0.8em;
         font-size: 1.2em;
     }
 
     .heading2 {
+        font-family: "FOT-ハミング Std D";
         margin-top: 0.6em;
         font-size: 1.1em;
     }
 
     .heading3 {
+        font-family: "FOT-ハミング Std D";
         margin-top: 0.3em;
-        font-weight: bold;
     }
 
     iframe[src^="http://bandcamp.com/EmbeddedPlayer"] {
