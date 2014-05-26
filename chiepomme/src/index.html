@@ -102,7 +102,7 @@
         </section>
 
 
-        {% elif post.type == "post" %}
+        {% elif post.type == "post" or post.type == "link" %}
         <section>
             <article itemscope itemtype="http://schema.org/BlogPosting">
                 <h3><a href="{{ post.permalink }}">{{ post.title}}</a></h3>
@@ -135,7 +135,6 @@
 
             </article>
         </section>
-        {% elif post.type == "link" %}
         {% elif post.type == "page" %}
         <section>
             <article itemscope itemtype="http://schema.org/Article">
