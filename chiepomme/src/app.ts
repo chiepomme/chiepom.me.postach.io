@@ -1,57 +1,102 @@
-﻿class Chiepomme {
+﻿class Star {
+    x: number;
+    y: number;
+    size: number = 10;
+}
 
-    two: Two;
-    rect: Two.Shape;
+class MathUtil {
+    static TwoPI: number = Math.PI * 2;
+}
 
-    start(root: HTMLElement) {
-        var params = {
-            type: Two.Types.canvas,
-            fullscreen: true,
-        };
+class Random {
+    static Range(from: number, to: number): number {
+        return from + Math.random() * (to - from);
+    }
+}
 
-        this.two = new Two(params);
-        this.two.appendTo(root);
+class Planetarium {
+    private cover: HTMLDivElement;
+    private canvas: HTMLCanvasElement;
+    private ctx: CanvasRenderingContext2D;
 
-        var circle = this.two.makeCircle(10, 10, 10);
-        this.rect = this.two.makeRectangle(30, 30, 30, 30);
-        circle.fill = "#FF8000";
-        circle.stroke = "orangered";
-        circle.linewidth = 5;
+    private resizeWaitMs: number = 300;
+    private timerHandler: number;
 
-        this.rect.fill = "#00CCFF";
-        this.rect.opacity = 0.75;
-        this.rect.noStroke();
+    constructor() {
+        this.canvas = document.createElement("canvas");
+        var style = this.canvas.style;
+        style.position = "fixed";
+        style.top = "0";
+        style.left = "0";
+        style.zIndex = "-2";
 
-        this.rect.translation.set(20, 50);
-        this.rect.rotation = Math.PI;
+        this.ctx = this.canvas.getContext("2d");
+        this.cover = document.createElement("div");
+        this.cover.style.backgroundColor = "rgba(255, 255, 255, 0.6)";
+        this.cover.style.zIndex = "-1";
+        this.cover.style.position = "fixed";
 
-        this.two.bind(Two.Events.update, (frame) => {
-            console.log(frame);
-            this.rect.scale *= 1.001;
+        this.fitToWindow();
+
+        document.body.appendChild(this.canvas);
+        document.body.appendChild(this.cover);
+
+        this.draw();
+
+        // delayed resize
+        window.addEventListener("resize", () => {
+            clearTimeout(this.timerHandler);
+            this.timerHandler = setTimeout(() => {
+                this.fitToWindow();
+                this.draw();
+            }, this.resizeWaitMs);
         });
-
-        /*
-        window.onresize = (ev) => {
-            this.two.width = window.innerWidth;
-            this.two.height = window.innerHeight;
-        };
-        */
-
-        this.two.play();
     }
 
-    update() {
-        /*
-        this.rect.translation.x += 1;
-        this.two.update();
-        window.setTimeout(this.update, 1);
-*/
+    draw(): void {
+
+        for (var i = 0; i < 150; i++) {
+            var x = Random.Range(0, this.canvas.width);
+            var y = Random.Range(0, this.canvas.height);
+            var innerRadius = Random.Range(3, 8);
+            var outerRadius = innerRadius * 1.8;
+            var angle = MathUtil.TwoPI / 5;
+            var halfAngle = angle / 2;
+            var angleOffset = Random.Range(0, MathUtil.TwoPI);
+            this.ctx.beginPath();
+
+            for (var a = 0; a < MathUtil.TwoPI; a += angle) {
+                var an = a + angleOffset + Random.Range(-0.1, 0.1);
+                var sx = x + Math.cos(an) * outerRadius;
+                var sy = y + Math.sin(an) * outerRadius;
+                this.ctx.lineTo(sx, sy);
+                an += halfAngle + Random.Range(-0.1, 0.1);
+                sx = x + Math.cos(an) * innerRadius;
+                sy = y + Math.sin(an) * innerRadius;
+                this.ctx.lineTo(sx, sy);
+            }
+
+            this.ctx.closePath();
+            this.ctx.strokeStyle = "#EEEEEE";
+            this.ctx.fillStyle = "#EEEEEE";
+            if (Math.random() > 0.7)
+                this.ctx.stroke();
+            else
+                this.ctx.fill();
+
+        }
+    }
+
+    fitToWindow(): void {
+        this.canvas.width = window.innerWidth;
+        this.canvas.height = window.innerHeight;
+        this.cover.style.width = document.body.clientWidth + "px";
+        this.cover.style.height = document.body.clientHeight + "px";
+        this.cover.style.left = window.innerWidth / 2 - document.body.clientWidth / 2 + "px";
+        this.cover.style.top = "0";
     }
 }
 
-window.onload = () => {
-    var chiepomme = new Chiepomme();
-    var el = document.getElementById("root");
-    var canvas = document.getElementsByTagName("canvas");
-    chiepomme.start(el);
-}
+document.addEventListener("DOMContentLoaded", () => {
+    var planetarium = new Planetarium();
+}, false);
