@@ -107,6 +107,10 @@ class Random {
     static Range(from: number, to: number): number {
         return from + Math.random() * (to - from);
     }
+
+    static Int(from: number, to: number): number {
+        return Math.floor(Random.Range(from, to));
+    }
 }
 
 class Planetarium {
@@ -163,11 +167,46 @@ class Planetarium {
             this.stars[i].position.x = x;
             this.stars[i].position.y = y;
             this.stars[i].draw(this.ctx);
-
-            if (i == 0) continue;
-
-            this.connect(this.stars[i - 1], this.stars[i]);
         }
+
+        var center = new Vector2(this.canvas.width / 2, this.canvas.height / 2);
+
+        var starTopLeft = this.findStar((star) => star.position.x < center.x && star.position.y < center.y);
+        this.findAndConnect(0, starTopLeft);
+
+        var starTopRight = this.findStar((star) => star.position.x > center.x && star.position.y < center.y);
+        this.findAndConnect(0, starTopRight);
+
+        var starBottomLeft = this.findStar((star) => star.position.x < center.x && star.position.y > center.y);
+        this.findAndConnect(0, starBottomLeft);
+
+        var starBottomRight = this.findStar((star) => star.position.x > center.x && star.position.y > center.y);
+        this.findAndConnect(0, starBottomRight);
+    }
+
+    findAndConnect(depth: number, star: Star, previousStar: Star = null): void {
+        var nextStar = this.findStar((candidate) => {
+            var distance = candidate.position.subtract(star.position).length();
+            if (20 < distance && distance < 100 && candidate != previousStar)
+                return true;
+            else
+                return false;
+        });
+
+        if (nextStar == null || depth > 6) return;
+
+        this.connect(star, nextStar);
+
+        this.findAndConnect(depth + 1, nextStar, star);
+    }
+
+    findStar(predicate: (star: Star) => boolean): Star {
+        for (var i = 0; i < this.stars.length; i++) {
+            var star = this.stars[i];
+            if (predicate(star))
+                return star;
+        }
+        return null;
     }
 
     connect(from: Star, to: Star): void {
@@ -175,9 +214,10 @@ class Planetarium {
         var unitVector = bridgeVector.getNormalized();
         var start = from.position.add(unitVector.multiply(20));
         var end = start.add(unitVector.multiply(bridgeVector.length() - 40));
+        this.ctx.beginPath();
         this.ctx.moveTo(start.x, start.y);
         this.ctx.lineTo(end.x, end.y);
-        this.ctx.strokeStyle = "black";
+        this.ctx.strokeStyle = new Color(0, 0, 0.9).toCSSString();
         this.ctx.stroke();
     }
 
