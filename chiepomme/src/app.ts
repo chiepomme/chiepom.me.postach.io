@@ -3,6 +3,27 @@
         public x: number = 0,
         public y: number = 0
         ) { }
+
+    length(): number {
+        return Math.pow(this.x * this.x + this.y * this.y, 0.5);
+    }
+
+    getNormalized(): Vector2 {
+        var length = this.length();
+        return new Vector2(this.x / length, this.y / length);
+    }
+
+    multiply(factor: number): Vector2 {
+        return new Vector2(this.x * factor, this.y * factor);
+    }
+
+    add(b: Vector2): Vector2 {
+        return new Vector2(this.x + b.x, this.y + b.y);
+    }
+
+    subtract(b: Vector2): Vector2 {
+        return new Vector2(this.x - b.x, this.y - b.y);
+    }
 }
 
 class Color {
@@ -45,14 +66,14 @@ class Star {
         public position: Vector2 = new Vector2(),
         public rotation: number = 0,
         public color: Color = new Color(),
-        public size: number = 10
+        public magnitude: number = 10
         ) { }
 
     draw(ctx: CanvasRenderingContext2D) {
         var x = this.position.x;
         var y = this.position.y;
-        var innerRadius = this.size * 0.6;
-        var outerRadius = this.size;
+        var innerRadius = this.magnitude * 0.6;
+        var outerRadius = this.magnitude;
         var angle = MathUtil.TwoPI / 5;
         var halfAngle = angle / 2;
         var angleOffset = MathUtil.DegreeToRadian(this.rotation);
@@ -113,11 +134,11 @@ class Planetarium {
 
         for (var i = 0; i < 150; i++) {
             var rotation = Random.Range(0, 360);
-            var size = Random.Range(2, 18);
+            var magnitude = Random.Range(2, 18);
             var color: Color;
             color = new Color(Random.Range(0, 360), 0.09, 1.0);
 
-            this.stars.push(new Star(new Vector2(), rotation, color, size));
+            this.stars.push(new Star(new Vector2(), rotation, color, magnitude));
         }
 
         this.draw();
@@ -142,7 +163,22 @@ class Planetarium {
             this.stars[i].position.x = x;
             this.stars[i].position.y = y;
             this.stars[i].draw(this.ctx);
+
+            if (i == 0) continue;
+
+            this.connect(this.stars[i - 1], this.stars[i]);
         }
+    }
+
+    connect(from: Star, to: Star): void {
+        var bridgeVector = to.position.subtract(from.position);
+        var unitVector = bridgeVector.getNormalized();
+        var start = from.position.add(unitVector.multiply(20));
+        var end = start.add(unitVector.multiply(bridgeVector.length() - 40));
+        this.ctx.moveTo(start.x, start.y);
+        this.ctx.lineTo(end.x, end.y);
+        this.ctx.strokeStyle = "black";
+        this.ctx.stroke();
     }
 
     fitToWindow(): void {
