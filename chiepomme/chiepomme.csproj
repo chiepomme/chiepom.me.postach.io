@@ -45,19 +45,17 @@
     </PreBuildEvent>
   </PropertyGroup>
   <ItemGroup>
+    <Content Include="src\Planetarium.html" />
     <Content Include="src\index.html" />
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="src\app.ts" />
-    <TypeScriptCompile Include="typings\backbone\backbone.d.ts" />
-    <TypeScriptCompile Include="typings\jquery\jquery.d.ts" />
-    <TypeScriptCompile Include="typings\lodash\lodash.d.ts" />
-    <TypeScriptCompile Include="typings\requirejs\require.d.ts" />
-    <TypeScriptCompile Include="typings\tsd.d.ts" />
-    <TypeScriptCompile Include="typings\two.d.ts" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="src\style.scss" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="typings\" />
   </ItemGroup>
   <ProjectExtensions>
     <VisualStudio>
