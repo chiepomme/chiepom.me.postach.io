@@ -10,7 +10,10 @@
 
     typescript :
       base :
-        src : ["src/**/*.ts", "typings/**/*.d.ts"]
+        src  : ["src/**/*.ts", "typings/**/*.d.ts"]
+        dest : "src/app.js"
+        options :
+          target : "es5"
 
     imagemin :
       static :
