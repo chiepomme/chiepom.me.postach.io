@@ -14,13 +14,7 @@
         ) {
 
         this.createStars();
-
-        var center = new Vector2(width / 2, height / 2);
-
-        this.asterisms.push(this.findAsterism((star) => star.position.x < center.x && star.position.y < center.y));
-        this.asterisms.push(this.findAsterism((star) => star.position.x > center.x && star.position.y < center.y));
-        this.asterisms.push(this.findAsterism((star) => star.position.x < center.x && star.position.y > center.y));
-        this.asterisms.push(this.findAsterism((star) => star.position.x > center.x && star.position.y > center.y));
+        this.findAsterisms();
     }
 
     findStar(predicate: (star: Star) => boolean): Star {
@@ -37,6 +31,7 @@
             this.stars[i].position.x = Random.range(0, this.width);
             this.stars[i].position.y = Random.range(0, this.height);
         }
+        this.findAsterisms();
     }
 
     private createStars() {
@@ -54,6 +49,15 @@
         color = new Color(Random.perimeterDegree(), this.saturation, this.luminous);
 
         return new Star(new Vector2(x, y), rotation, color, magnitude);
+    }
+
+    private findAsterisms() {
+        var center = new Vector2(this.width / 2, this.height / 2);
+        this.asterisms = new Array<Asterism>();
+        this.asterisms.push(this.findAsterism((star) => star.position.x < center.x && star.position.y < center.y));
+        this.asterisms.push(this.findAsterism((star) => star.position.x > center.x && star.position.y < center.y));
+        this.asterisms.push(this.findAsterism((star) => star.position.x < center.x && star.position.y > center.y));
+        this.asterisms.push(this.findAsterism((star) => star.position.x > center.x && star.position.y > center.y));
     }
 
     private findAsterism(firstStarPredicate: (star: Star) => boolean) {

@@ -15,7 +15,7 @@
         this.cover = this.createCover();
         this.ctx = this.canvas.getContext("2d");
 
-        this.fitToWindow();
+        this.fitCanvasToWindow();
 
         this.planet = new Planet(this.canvas.width, this.canvas.height);
 
@@ -27,7 +27,9 @@
         this.writeToBackground();
 
         this.resizer = new LazyResizer(() => {
-            this.fitToWindow();
+            this.fitCanvasToWindow();
+            this.planet.width = this.canvas.width;
+            this.planet.height = this.canvas.height;
             this.planet.moveStars();
             this.planetDrawer.draw(this.planet);
             this.writeToBackground();
@@ -39,7 +41,7 @@
         cover.style.backgroundColor = new Color(0, 0, 1, 0.6).css;
         cover.style.zIndex = "-1";
         cover.style.position = "fixed";
-        document.body.appendChild(this.cover);
+        document.body.appendChild(cover);
         document.body.style.backgroundAttachment = "fixed";
         return cover;
     }
@@ -50,7 +52,7 @@
         });
     }
 
-    private fitToWindow() {
+    private fitCanvasToWindow() {
         this.canvas.width = window.innerWidth;
         this.canvas.height = window.innerHeight;
         this.cover.style.width = document.body.clientWidth + "px";

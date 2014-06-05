@@ -35,7 +35,7 @@
             });
 
         else
-            return "rgba({r},{g},{b},{a)".format({
+            return "rgba({r},{g},{b},{a})".format({
                 r: Math.round(r * 255),
                 g: Math.round(g * 255),
                 b: Math.round(b * 255),

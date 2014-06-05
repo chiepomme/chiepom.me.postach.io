@@ -2,6 +2,6 @@
     format(hash: any): string;
 }
 
-String.prototype.format = (hash) => {
+String.prototype.format = function (hash) {
     return (<string>this).replace(/\{([^{}]+)\}/g, (substring, group) => hash[group]);
 };
