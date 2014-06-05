@@ -49,7 +49,18 @@
     <Content Include="src\index.html" />
   </ItemGroup>
   <ItemGroup>
-    <TypeScriptCompile Include="src\app.ts" />
+    <TypeScriptCompile Include="src\ts\lib\LazyResizer.ts" />
+    <TypeScriptCompile Include="src\ts\Planet.ts" />
+    <TypeScriptCompile Include="src\ts\Asterism.ts" />
+    <TypeScriptCompile Include="src\ts\Planetarium.ts" />
+    <TypeScriptCompile Include="src\ts\Star.ts" />
+    <TypeScriptCompile Include="src\ts\lib\Color.ts" />
+    <TypeScriptCompile Include="src\ts\lib\Number.ts" />
+    <TypeScriptCompile Include="src\ts\lib\Random.ts" />
+    <TypeScriptCompile Include="src\ts\lib\String.ts" />
+    <TypeScriptCompile Include="src\ts\lib\Vector2.ts" />
+    <TypeScriptCompile Include="src\ts\lib\Math.ts" />
+    <TypeScriptCompile Include="src\ts\Main.ts" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="src\style.scss" />
