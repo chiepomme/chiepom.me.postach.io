@@ -46,7 +46,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Content Include="src\Planetarium.html" />
-    <Content Include="src\index.html" />
+    <Content Include="src\theme.html" />
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="src\ts\lib\LazyResizer.ts" />

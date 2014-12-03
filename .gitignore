@@ -11,5 +11,3 @@ obj/
 *.map
 *.TMP
 chiepomme/src/*.png
-dist/
-

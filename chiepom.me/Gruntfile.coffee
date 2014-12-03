@@ -20,8 +20,8 @@
         options :
           cssmin : true
           uglify : true
-        src : ["src/index.html"]
-        dest : ["dist/"]
+        src : ["src/theme.html"]
+        dest : ["../"]
 
     watch :
       files : ["src/**/*.html", "src/**/*.scss", "src/**/*.ts"]
