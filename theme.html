@@ -75,6 +75,11 @@ var Asterism=function(){function t(t,n){this.planet=t,this.stars=new Array,this.
                 {% if post.tags %}
                 <div class="tags">{{ post.tags | format_tags(delimiter=" ") }}</div>
                 {% endif %}
+
+                <div class="share">
+                    <a href="https://twitter.com/share" class="twitter-share-button" data-url="{{ site.base_url }}{{ post.permalink }}" data-text="chiepom.me - {{ post.title }}" data-via="chiepomme" data-related="chiepomme">Tweet</a>
+                    <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+                </div>
             </article>
             {% endfor %}
 
@@ -104,6 +109,11 @@ var Asterism=function(){function t(t,n){this.planet=t,this.stars=new Array,this.
                 {% if post.tags %}
                 <div class="tags">{{ post.tags | format_tags(delimiter=" ") }}</div>
                 {% endif %}
+
+                <div class="share">
+                    <a href="https://twitter.com/share" class="twitter-share-button" data-url="{{ site.base_url }}{{ post.permalink }}" data-text="chiepom.me - {{ post.title }}" data-via="chiepomme" data-related="chiepomme">Tweet</a>
+                    <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+                </div>
             </article>
             {% endfor %}
         </section>
@@ -125,6 +135,11 @@ var Asterism=function(){function t(t,n){this.planet=t,this.stars=new Array,this.
                 {% if post.tags %}
                 <div class="tags">{{ post.tags | format_tags(delimiter=" ") }}</div>
                 {% endif %}
+
+                <div class="share">
+                    <a href="https://twitter.com/share" class="twitter-share-button" data-url="{{ site.base_url }}{{ post.permalink }}" data-via="chiepomme" data-related="chiepomme">Tweet</a>
+                    <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+                </div>
 
                 <section class="comments">
                     <div id="disqus_thread"></div>
@@ -153,6 +168,11 @@ var Asterism=function(){function t(t,n){this.planet=t,this.stars=new Array,this.
                 {% set article = article|replace('<' + 'div># ',   '<' + 'div class="heading1">') %}
                 {% set article = article|replace('<' + 'div>',     '<' + 'div class="paragraph">') %}
                 <div class="content" data-type-cleanup="true">{{ article }}</div>
+
+                <div class="share">
+                    <a href="https://twitter.com/share" class="twitter-share-button" data-url="{{ site.base_url }}{{ page.permalink }}" data-text="chiepom.me - {{ page.title }}" data-via="chiepomme" data-related="chiepomme">Tweet</a>
+                    <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+                </div>
             </article>
         </section>
         {% endif %}
