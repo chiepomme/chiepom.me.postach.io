@@ -30,6 +30,10 @@
     </script>
     <script type="text/javascript" src="http://use.typekit.net/rcs4ogg.js"></script>
     <script type="text/javascript">try { Typekit.load(); } catch (e) { }</script>
+    <script type="text/javascript" src="../bower_components/echo/dist/echo.min.js?__inline=true"></script>
+    <script type="text/javascript">
+        echo.init();
+    </script>
     <script type="text/javascript" src="app.js?__inline=true"></script>
 </head>
 <body>
@@ -63,6 +67,7 @@
                 {% set article = article|replace('<' + 'div>## ',  '<' + 'div class="heading2">') %}
                 {% set article = article|replace('<' + 'div># ',   '<' + 'div class="heading1">') %}
                 {% set article = article|replace('<' + 'div>',     '<' + 'div class="paragraph">') %}
+                {% set article = article|replace('src="//www.youtube',   'data-echo="//www.youtube') %}
                 <div class="content" data-type-cleanup="true">{{ article }}</div>
 
                 {% if post.tags %}
@@ -97,6 +102,7 @@
                 {% set article = article|replace('<' + 'div>## ',  '<' + 'div class="heading2">') %}
                 {% set article = article|replace('<' + 'div># ',   '<' + 'div class="heading1">') %}
                 {% set article = article|replace('<' + 'div>',     '<' + 'div class="paragraph">') %}
+                {% set article = article|replace('src="//www.youtube',   'data-echo="//www.youtube') %}
                 <div class="content" data-type-cleanup="true">{{ article }}</div>
 
                 {% if post.tags %}
@@ -123,6 +129,7 @@
                 {% set article = article|replace('<' + 'div>## ',  '<' + 'div class="heading2">') %}
                 {% set article = article|replace('<' + 'div># ',   '<' + 'div class="heading1">') %}
                 {% set article = article|replace('<' + 'div>',     '<' + 'div class="paragraph">') %}
+                {% set article = article|replace('src="//www.youtube',   'data-echo="//www.youtube') %}
                 <div class="content" data-type-cleanup="true">{{ article }}</div>
 
                 {% if post.tags %}
@@ -160,6 +167,7 @@
                 {% set article = article|replace('<' + 'div>## ',  '<' + 'div class="heading2">') %}
                 {% set article = article|replace('<' + 'div># ',   '<' + 'div class="heading1">') %}
                 {% set article = article|replace('<' + 'div>',     '<' + 'div class="paragraph">') %}
+                {% set article = article|replace('src="//www.youtube',   'data-echo="//www.youtube') %}
                 <div class="content" data-type-cleanup="true">{{ article }}</div>
 
                 <div class="share">
