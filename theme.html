@@ -76,6 +76,9 @@ var Asterism=function(){function t(t,n){this.planet=t,this.stars=new Array,this.
                 {% set article = article|replace('<' + 'div># ',   '<' + 'div class="heading1">') %}
                 {% set article = article|replace('<' + 'div>',     '<' + 'div class="paragraph">') %}
                 {% set article = article|replace('src="//www.youtube',   'data-echo="//www.youtube') %}
+                {% set article = article|replace('src="https://w.soundcloud.com', 'data-echo="https://w.soundcloud.com') %}
+                {% set article = article|replace('src="https://bandcamp.com/EmbeddedPlayer', 'data-echo="https://bandcamp.com/EmbeddedPlayer') %}
+                
                 <div class="content" data-type-cleanup="true">{{ article }}</div>
 
                 {% if post.tags %}
@@ -111,6 +114,8 @@ var Asterism=function(){function t(t,n){this.planet=t,this.stars=new Array,this.
                 {% set article = article|replace('<' + 'div># ',   '<' + 'div class="heading1">') %}
                 {% set article = article|replace('<' + 'div>',     '<' + 'div class="paragraph">') %}
                 {% set article = article|replace('src="//www.youtube',   'data-echo="//www.youtube') %}
+                {% set article = article|replace('src="https://w.soundcloud.com', 'data-echo="https://w.soundcloud.com') %}
+                {% set article = article|replace('src="https://bandcamp.com/EmbeddedPlayer', 'data-echo="https://bandcamp.com/EmbeddedPlayer') %}
                 <div class="content" data-type-cleanup="true">{{ article }}</div>
 
                 {% if post.tags %}
@@ -138,6 +143,8 @@ var Asterism=function(){function t(t,n){this.planet=t,this.stars=new Array,this.
                 {% set article = article|replace('<' + 'div># ',   '<' + 'div class="heading1">') %}
                 {% set article = article|replace('<' + 'div>',     '<' + 'div class="paragraph">') %}
                 {% set article = article|replace('src="//www.youtube',   'data-echo="//www.youtube') %}
+                {% set article = article|replace('src="https://w.soundcloud.com', 'data-echo="https://w.soundcloud.com') %}
+                {% set article = article|replace('src="https://bandcamp.com/EmbeddedPlayer', 'data-echo="https://bandcamp.com/EmbeddedPlayer') %}
                 <div class="content" data-type-cleanup="true">{{ article }}</div>
 
                 {% if post.tags %}
@@ -176,6 +183,8 @@ var Asterism=function(){function t(t,n){this.planet=t,this.stars=new Array,this.
                 {% set article = article|replace('<' + 'div># ',   '<' + 'div class="heading1">') %}
                 {% set article = article|replace('<' + 'div>',     '<' + 'div class="paragraph">') %}
                 {% set article = article|replace('src="//www.youtube',   'data-echo="//www.youtube') %}
+                {% set article = article|replace('src="https://w.soundcloud.com', 'data-echo="https://w.soundcloud.com') %}
+                {% set article = article|replace('src="https://bandcamp.com/EmbeddedPlayer', 'data-echo="https://bandcamp.com/EmbeddedPlayer') %}
                 <div class="content" data-type-cleanup="true">{{ article }}</div>
 
                 <div class="share">
